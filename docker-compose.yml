@@ -1,0 +1,30 @@
+version: '2'
+
+volumes:
+  postgresql_data:
+    driver: local
+
+services:
+  pgsql-database:
+    hostname: pgsql-database-host
+    image: jizuzquiza/postgres:14-alpine 
+    environment:
+      POSTGRES_USER: pgadmin
+      POSTGRES_PASSWORD: password@1
+      POSTGRES_DB: initial_db
+    volumes:
+      - postgresql_data:/var/lib/postgresql/data 
+    ports:
+    - 5432:5432
+    mem_limit: 2048m
+  pgadmin-workbench:
+    hostname: pgadmin-workbench-host
+    image: jizuzquiza/pgadmin4:6.16
+    environment:
+      PGADMIN_DEFAULT_EMAIL: pgadmin@postgres.com
+      PGADMIN_DEFAULT_PASSWORD: password@1
+      PGADMIN_LISTEN_ADDRESS: 0.0.0.0
+    ports:
+    - 5433:80
+    mem_limit: 2048m
+
