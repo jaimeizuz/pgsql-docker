@@ -19,7 +19,7 @@ services:
     mem_limit: 2048m
   pgadmin-workbench:
     hostname: pgadmin-workbench-host
-    image: jizuzquiza/pgadmin4:6.16
+    image: jizuzquiza/pgadmin4:7.4
     environment:
       PGADMIN_DEFAULT_EMAIL: pgadmin@postgres.com
       PGADMIN_DEFAULT_PASSWORD: password@1
